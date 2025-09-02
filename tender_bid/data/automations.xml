@@ -1,0 +1,18 @@
+<odoo>
+    <record id="automated_create_project_on_won" model="ir.cron">
+        <field name="name">Create Project on Tender Won</field>
+        <field name="model_id" ref="model_tender_bid"/>
+        <field name="state">code</field>
+        <field name="code">
+            for bid in env['tender.bid'].search([('status', '=', 'won'), ('project_created', '=', False)]):
+            # Create project logic here; mark project_created = True after creation
+            project_vals = {
+            'name': f'{bid.tender_no} Project',
+            'partner_id': bid.tender_ref.partner_id.id,
+            # Additional auto-fill fields
+            }
+            project = env['project.project'].create(project_vals)
+            bid.write({'project_created': True})
+        </field>
+    </record>
+</odoo>

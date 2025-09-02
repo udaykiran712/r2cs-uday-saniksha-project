@@ -1,0 +1,15 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Scheduled action to assign 'Upload BG' activity 3 days before submission date -->
+<record id="cron_assign_upload_activity" model="ir.cron">
+    <field name="name">Assign Upload BG Activity for Tender</field>
+<field name="model_id" ref="model_tender_bid"/>
+    <field name="state">code</field>
+    <field name="code">model.cron_assign_upload_bg_activity()</field>
+    <field name="active" eval="True"/>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="priority" eval="10"/>
+</record>
+    </data>
+</odoo>
