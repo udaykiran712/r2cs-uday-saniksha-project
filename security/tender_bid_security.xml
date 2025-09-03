@@ -1,0 +1,6 @@
+<odoo>
+    <record id="group_tender_bid_user" model="res.groups">
+        <field name="name">Tender Bid User</field>
+        <field name="category_id" ref="base.module_category_sales"/>
+    </record>
+</odoo>
